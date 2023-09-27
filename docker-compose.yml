@@ -1,0 +1,23 @@
+version: '3.10'
+
+services:
+  django:
+    image: django-sampath
+    build: .
+    ports: 
+      - "8000:8000"
+    volumes:
+      - C:\Users\arava\OneDrive\Documents\python\Python_sample\My_Django_Stuff\Djangodocker\learning_users:/code  
+
+  db:
+    image: mysql
+    ports:
+      - "3306:3306" 
+    environment: 
+      MYSQL_ROOT_PASSWORD: root     
+
+    volumes:
+     - Mysql-data:/var/lib/mysql
+
+volumes:
+  Mysql-data:
