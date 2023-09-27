@@ -13,4 +13,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag django-docker-cicd:$(date +%s)
+      run: docker build . --file Dockerfile --tag django-docker-cicd
+    - name: Push image to Docker hub
+      uses: mr-smithers-excellent/docker-build-push@v6
+      with:
+       image: 9030319796/django-docker-cicd
+       registry: docker.io
+       username: ${{ secrets.DOCKER_USERNAME }}
+       password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      
